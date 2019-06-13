@@ -41,25 +41,37 @@ class App extends React.Component {
         this.setState({outcommingMessage: ''})
     }
 
+    showTooltip() {
+        console.log(localStorage.getItem('newbie') === null)
+
+        if(localStorage.getItem('newbie') !== null) {
+            return
+        }
+        localStorage.setItem('newbie', false);
+        return <div className="outCommingMessage message">Анонимный чат</div>
+    }
+
     render() {
 
        return <div className='wrapper'>
            {
-
                this.state.messages.map((message, i) => <div className='incomingMessage message' key={i}>{message}</div>)
-
            }
-           <div className="outCommingMessage message">Анонимный чат</div>
-               <input
-                   value={this.state.outcommingMessage}
-                   onChange={(e) => this.setState({outcommingMessage: e.target.value})}
-                   onKeyDown={event => {
+           {
+               this.showTooltip()
+           }
+           <input
+               value={this.state.outcommingMessage}
+               onChange={(e) => this.setState({outcommingMessage: e.target.value})}
+               onKeyDown={event => {
                    event.keyCode === ENTER_KEYCODE && this.putData(this.state.outcommingMessage)
                }}
-                   placeholder='Введите текст' type="text"/>
-                   <button onClick={() => this.putData(this.state.outcommingMessage)}>
-                       <a className="arrow arrow-right" title="Next"></a>
-                   </button>
+               placeholder='Введите текст'
+               type="text"
+           />
+               <button onClick={() => this.putData(this.state.outcommingMessage)}>
+                   <a className="arrow arrow-right" title="Next"></a>
+               </button>
        </div>
    }
 }
