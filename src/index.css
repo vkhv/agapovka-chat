@@ -90,7 +90,6 @@ input {
   padding-left: 20px;
   color: rgb(242,242,242);
   font-size: 17px;
-  margin-top: calc(80vh);
 }
 
 input:focus::-webkit-input-placeholder {
