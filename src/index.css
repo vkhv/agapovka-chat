@@ -5,9 +5,89 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 2vw;
+  background-color: rgb(13,17,25);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.wrapper {
+    margin: auto;
+  max-width: 50vw;
+  flex-direction: column;
+  display: flex;
+}
+
+.message {
+  padding: 20px;
+  color: rgb(242, 242, 242);
+  margin-bottom: 8px;
+  border-radius: 8px;
+  width: fit-content;
+  position: relative;
+}
+
+
+
+.incomingMessage {
+  text-align: left;
+  background-color: rgb(19,27,39);
+
+}
+
+.incomingMessage:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 70%;
+  width: 0;
+  height: 0;
+  border: 21px solid transparent;
+  border-right-color: rgb(19,27,39);
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -4px;
+  margin-left: -10px;
+}
+
+.outCommingMessage {
+  text-align: right;
+  background-color: rgb(33, 62, 103);
+  align-self: flex-end;
+}
+
+.outCommingMessage:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 70%;
+  width: 0;
+  height: 0;
+  border: 21px solid transparent;
+  border-left-color: rgb(33, 62, 103);
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -4px;
+  margin-right: -10px;
+}
+
+input {
+  position: sticky;
+  bottom: 0;
+  background-color: rgb(18,25,33);
+  height: 45px;
+  border: none;
+  outline: none;
+    color: rgb(90,101,113);
+  padding-right: 20px;
+  padding-left: 20px;
+  color: rgb(242,242,242);
+  font-size: 17px;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: rgb(62,72,85);
 }
