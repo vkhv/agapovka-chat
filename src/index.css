@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 2vw;
   background-color: rgb(13,17,25);
+
 }
 
 code {
@@ -19,6 +20,8 @@ code {
   max-width: 50vw;
   flex-direction: column;
   display: flex;
+  /*opacity:0; !*Элемент полностью прозрачный (невидимый)*!*/
+  transition: 3s; /*Скорость перехода состояния элемента*/
 }
 
 .message {
@@ -75,8 +78,9 @@ code {
 }
 
 input {
+  margin-top: 45px;
   position: sticky;
-  bottom: 0;
+  bottom: 20px;
   background-color: rgb(18,25,33);
   height: 45px;
   border: none;
@@ -86,8 +90,45 @@ input {
   padding-left: 20px;
   color: rgb(242,242,242);
   font-size: 17px;
+  margin-top: calc(80vh);
 }
 
 input:focus::-webkit-input-placeholder {
   color: rgb(62,72,85);
+}
+
+button {
+  height: 45px;
+  margin-top: -45px;
+  z-index: 1;
+  width: 50px;
+  align-self: flex-end;
+  background: rgb(18,25,33);
+  outline: none;
+  border: none;
+  position: sticky;
+  bottom: 20px;
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  padding: 10px;
+  box-shadow: 1px -1px 0 1px  rgb(62,72,85) inset;
+  border: solid transparent;
+  border-width: 0 0 2rem 2rem;
+  transition: 0.2s;
+}
+
+.arrow:hover {
+  box-shadow: 1px -1px 0 1px rgb(90,101,113) inset;
+}
+
+.arrow-right { transform:rotate(225deg) }
+
+
+.arrow {
+  top: 62px;
+  margin: -67px 0 0 -67px;
+  left: 83px;
 }

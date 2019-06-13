@@ -9,33 +9,58 @@ var config = {
     storageBucket: "agapovka-ccb77.appspot.com",
     messagingSenderId: "523006834768"
 };
-
+const ENTER_KEYCODE = 13;
 class App extends React.Component {
     constructor(p) {
         super(p);
+        firebase.initializeApp(config);
         this.state = {
-            messages: []
-        }
+            messages: [],
+            outcommingMessage: ''
+        };
+        this.database = firebase.database();
     }
     componentDidMount() {
 
-        firebase.initializeApp(config);
-        const database = firebase.database();
+        const database = this.database;
 
         database.ref('chat').on('value', (snapshot) => {
             const messages = snapshot.val();
-            this.setState({messages: Object.values(messages)})
+            this.setState({messages: Object.values(messages || [])}, () => window.scrollTo(0 ,document.body.scrollHeight))
         })
+    }
+
+    putData() {
+        if(!this.state.outcommingMessage) {
+            return;
+        }
+        this.database.ref('chat').update({[Date.now()]: this.state.outcommingMessage});
+
+        window.scrollTo(0 ,document.body.scrollHeight);
+
+        this.setState({outcommingMessage: ''})
     }
 
     render() {
 
-       return this.state.messages.map((message, i) => <div className='wrapper' key={i}>
-           <div className='incomingMessage message'>{message}</div>
+       return <div className='wrapper'>
+           {
 
-           <div className="outCommingMessage message">Как тебя зовут?</div>
-           <input placeholder='Введите текст' type="text"/>
-       </div>)
+               this.state.messages.map((message, i) => <div className='incomingMessage message' key={i}>{message}</div>)
+
+           }
+           <div className="outCommingMessage message">Анонимный чат</div>
+               <input
+                   value={this.state.outcommingMessage}
+                   onChange={(e) => this.setState({outcommingMessage: e.target.value})}
+                   onKeyDown={event => {
+                   event.keyCode === ENTER_KEYCODE && this.putData(this.state.outcommingMessage)
+               }}
+                   placeholder='Введите текст' type="text"/>
+                   <button onClick={() => this.putData(this.state.outcommingMessage)}>
+                       <a className="arrow arrow-right" title="Next"></a>
+                   </button>
+       </div>
    }
 }
 
