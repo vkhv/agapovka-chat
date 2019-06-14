@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "8.1.3"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g firebase-tools
+  - npm install -g preact-cli
+  - npm install
+
+script:
+  - preact build
+
+after_success:
+  - firebase deploy --token 1/gxKdcjFBPuDuq0umHf5-Mgp28rwRRlOrAu1w2hc8_TDJGtCpicqs95ChZma3SRlV --non-interactive
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
