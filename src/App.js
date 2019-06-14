@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import firebase from 'firebase';
 import './App.css';
 var config = {
@@ -70,7 +70,7 @@ class App extends React.Component {
                type="text"
            />
                <button onClick={() => this.putData(this.state.outcommingMessage)}>
-                   <a className="arrow arrow-right" title="Next"></a>
+                   <span className="arrow arrow-right" title="Next"></span>
                </button>
        </div>
    }
