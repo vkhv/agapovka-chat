@@ -9,7 +9,6 @@ body {
   background-color: rgb(13,17,25);
 
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -17,11 +16,16 @@ code {
 
 .wrapper {
     margin: auto;
-  max-width: 50vw;
   flex-direction: column;
   display: flex;
   /*opacity:0; !*Элемент полностью прозрачный (невидимый)*!*/
   transition: 3s; /*Скорость перехода состояния элемента*/
+  max-width: 90vw;
+}
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    max-width: 50vw;
+  }
 }
 
 .message {
