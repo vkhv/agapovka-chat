@@ -40,7 +40,6 @@ class App extends React.Component {
     }
 
     showTooltip() {
-        console.log(localStorage.getItem('newbie') === null)
 
         if(localStorage.getItem('newbie') !== null) {
             return
