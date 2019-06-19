@@ -45,7 +45,7 @@ class App extends React.Component {
             return
         }
         localStorage.setItem('newbie', false);
-        return <div className="outCommingMessage message">Анонимный чат</div>
+        return <div className="outCommingMessage message">Анонимные отзывы об Агаповском районе</div>
     }
 
     render() {
