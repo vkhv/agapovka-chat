@@ -135,3 +135,10 @@ button {
   margin: -67px 0 0 -67px;
   left: 83px;
 }
+
+.spiner-center-wrapper {
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+}

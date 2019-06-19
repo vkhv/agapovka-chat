@@ -1,8 +1,13 @@
 import React from 'react';
 import firebase from 'firebase';
+import 'loaders.css';
 import './App.css';
 import config from './config';
 const ENTER_KEYCODE = 13;
+const loader = <div className='spiner-center-wrapper'>
+    <div class="ball-scale-ripple"><div></div></div>
+</div>
+
 class App extends React.Component {
     constructor(p) {
         super(p);
@@ -46,26 +51,28 @@ class App extends React.Component {
 
     render() {
 
-       return <div className='wrapper'>
-           {
-               this.state.messages.map((message, i) => <div className='incomingMessage message' key={i}>{message}</div>)
-           }
-           {
-               this.showTooltip()
-           }
-           <input
-               value={this.state.outcommingMessage}
-               onChange={(e) => this.setState({outcommingMessage: e.target.value})}
-               onKeyDown={event => {
-                   event.keyCode === ENTER_KEYCODE && this.putData(this.state.outcommingMessage)
-               }}
-               placeholder='Введите текст'
-               type="text"
-           />
-               <button onClick={() => this.putData(this.state.outcommingMessage)}>
-                   <span className="arrow arrow-right" title="Next"></span>
-               </button>
-       </div>
+       return this.state.messages.length ?
+            <div className='wrapper'>
+                {
+                    this.state.messages.map((message, i) => <div className='incomingMessage message' key={i}>{message}</div>)
+                }
+                {
+                    this.showTooltip()
+                }
+                <input
+                    value={this.state.outcommingMessage}
+                    onChange={(e) => this.setState({outcommingMessage: e.target.value})}
+                    onKeyDown={event => {
+                        event.keyCode === ENTER_KEYCODE && this.putData(this.state.outcommingMessage)
+                    }}
+                    placeholder='Введите текст'
+                    type="text"
+                />
+                    <button onClick={() => this.putData(this.state.outcommingMessage)}>
+                        <span className="arrow arrow-right" title="Next"></span>
+                    </button>
+            </div>
+        : loader;
    }
 }
 
