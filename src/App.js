@@ -45,7 +45,7 @@ class App extends React.Component {
             return
         }
         localStorage.setItem('newbie', false);
-        return <div className="outCommingMessage message">Вы можете оставить свое объявление. Для этого используйте форму внизу страницы.</div>
+        return <div className="outCommingMessage message">Вы можете оставить свое объявление. Для этого используйте форму снизу. И рано или поздно оно обязательно попадет в поисковую выдачу.</div>
     }
 
     render() {
