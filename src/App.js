@@ -1,5 +1,5 @@
 import React from 'react';
-import firebase from 'firebase';
+import {initializeApp, database} from 'firebase';
 import 'loaders.css';
 import './App.css';
 import config from './config';
@@ -11,12 +11,12 @@ const loader = <div className='spiner-center-wrapper'>
 class App extends React.Component {
     constructor(p) {
         super(p);
-        firebase.initializeApp(config);
+        initializeApp(config);
         this.state = {
             messages: [],
             outcommingMessage: ''
         };
-        this.database = firebase.database();
+        this.database = database();
     }
     componentDidMount() {
 
